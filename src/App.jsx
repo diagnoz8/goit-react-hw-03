@@ -7,11 +7,13 @@ import './App.css'
 
 function App() {
   const [contacts, setContacts] = useState(defaultContacts);
-const addContact = (newContact) =>{}
+  const addContact = (newContact) => {
+  setContacts(currContacts => {return[...currContacts, newContact]})
+}
   return (
   <div>
   <h1>Phonebook</h1>
-  <ContactForm />
+  <ContactForm onAdd = {addContact} />
   <SearchBox />
   <ContactList contacts = {contacts} />
 </div>
