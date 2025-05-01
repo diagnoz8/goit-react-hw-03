@@ -7,15 +7,27 @@ import './App.css'
 
 function App() {
   const [contacts, setContacts] = useState(defaultContacts);
+  const  [filter, setFilter] = useState('')
+ 
   const addContact = (newContact) => {
-  setContacts(currContacts => {return[...currContacts, newContact]})
-}
+    setContacts(currContacts => {
+      return [...currContacts, newContact]
+    })
+  }
+  const removeContact = (contactId) => {
+    setContacts(currContacts => {
+      return currContacts.filter(contact => contact.id !== contactId)
+    })
+  }
+ 
+  const shownContacts = contacts.filter(contact => contact.name.toLowerCase().includes(filter.toLowerCase()))
+
   return (
   <div>
   <h1>Phonebook</h1>
   <ContactForm onAdd = {addContact} />
-  <SearchBox />
-  <ContactList contacts = {contacts} />
+      <SearchBox value={filter} onSearch={setFilter} />
+      <ContactList contacts={shownContacts} onRemove={removeContact } />
 </div>
 
   )

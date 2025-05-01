@@ -1,11 +1,12 @@
-export default function Contact({ contactData }) {
+export default function Contact({ contactData, onRemove }) {
+    
     return (
         <>
             <ul>
-                <li>{contactData.name}</li>
-                <li>{contactData.number}</li>
+                <li >{contactData.name}</li>
+                <li >{contactData.number}</li>
          </ul>
-            <button>Delete</button>
+            <button onClick={() => onRemove(contactData.id)}>Delete</button>
         </>
         
     )
