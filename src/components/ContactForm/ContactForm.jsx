@@ -4,8 +4,8 @@ import { useId } from "react";
 import uniqid from 'uniqid';
 import css from './ContactForm.module.css';
 const validationSchema = Yup.object().shape({
-  name: Yup.string().min(2, "Too Short!").max(50, "Too Long!").required("Required"),
-  number: Yup.string().min(2, "Too Short!").max(50, "Too Long!").required("Required"),
+  name: Yup.string().min(3, "Too Short!").max(50, "Too Long!").required("Required"),
+  number: Yup.string().min(3, "Too Short!").max(50, "Too Long!").required("Required"),
 
 });
 export default function ContactForm({ onAdd }) {
