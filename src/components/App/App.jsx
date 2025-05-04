@@ -7,7 +7,10 @@ import './App.css'
 
 
 function App() {
-  const [contacts, setContacts] = useState(defaultContacts);
+  const [contacts, setContacts] = useState(() => {
+    const savedContacts = window.localStorage.getItem("contacts");
+  return savedContacts ? JSON.parse(savedContacts) : defaultContacts;
+  });
   const  [filter, setFilter] = useState('')
  
   const addContact = (newContact) => {
